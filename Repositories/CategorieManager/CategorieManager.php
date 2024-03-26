@@ -1,11 +1,12 @@
 <?php
 
-namespace Repositories\CategoryManager;
+namespace Repositories\CategorieManager;
 
-use Models\Category\Category;
+
 use Models\DbConnexion\DbConnexion;
+use Models\Categorie\Categorie;
 
-class CategoryManager
+class CategorieManager
 {
     private $pdo;
 
@@ -19,9 +20,9 @@ class CategoryManager
         $categories = [];
 
         try {
-            $stmt = $this->pdo->query("SELECT * FROM category");
+            $stmt = $this->pdo->query("SELECT * FROM categorie");
             while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                $categories[] = new Category($row);
+                $categories[] = new Categorie($row);
             }
         } catch (\PDOException $e) {
             return $categories;
@@ -29,11 +30,11 @@ class CategoryManager
         return $categories;
     }
 
-    public function insertCategory(Category $objet)
+    public function insertCategorie(Categorie $objet)
     {
-        $name = $objet->getNameCategory();
+        $name = $objet->getNameCategorie();
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO category (name) VALUES (?)");
+            $stmt = $this->pdo->prepare("INSERT INTO categorie (name) VALUES (?)");
             $stmt->execute([$name]);
 
             return $stmt->rowCount() == 1;

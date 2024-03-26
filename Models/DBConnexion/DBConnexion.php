@@ -5,9 +5,9 @@ namespace  Models\DbConnexion;
 class DbConnexion
 {
     private $host   = "localhost";
-    private $login  = "ecommerce";
-    private $pass   = "ecommerce";
-    private $bdd    = "ecommerce";
+    private $login  = "to-do-list_brief";
+    private $pass   = "to-do-list_brief";
+    private $bdd    = "to-do-list_brief";
     private $pdo;
 
     function __construct()
